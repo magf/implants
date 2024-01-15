@@ -5,7 +5,14 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 )
+
+type Implant struct {
+	level int
+	power int
+	count int
+}
 
 func main() {
 
@@ -20,16 +27,18 @@ func main() {
 	defer file.Close()
 
 	reader := csv.NewReader(file)
+	reader.FieldsPerRecord = 3
 	records, err := reader.ReadAll()
 
 	// Checks for the error
 	if err != nil {
-		fmt.Println("Error reading records")
+		fmt.Println("Error reading records.\n", err)
 	}
 
-	// Loop to iterate through
-	// and print each of the string slice
 	for _, eachrecord := range records {
+		if level, err := strconv.Atoi(eachrecord[1]); err == nil {
+			implant{level:???????????????? } := level
+		}
 		fmt.Println(eachrecord)
 	}
 }
